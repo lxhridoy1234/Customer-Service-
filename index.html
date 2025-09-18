@@ -3,166 +3,221 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ECOS INVESTMENT Help Service</title>
+<title>ECOS INVESTMENT | Help Service</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif;}
 body {
-    overflow-x: hidden;
+    background: linear-gradient(120deg, #1e3c72, #2a5298);
     min-height: 100vh;
-    background: #1e3c72;
-    color: #fff;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 50px 20px;
-    position: relative;
-}
-header {
-    text-align: center;
-    margin-bottom: 50px;
-    z-index: 2;
-    position: relative;
-    animation: fadeInDown 1s ease forwards;
-}
-header h1 {
-    font-size: 3rem;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
-.help-icon {
-    font-size: 2.5rem;
-    display: inline-block;
-    margin-bottom: 15px;
-    animation: bounce 2s infinite;
-}
-header p { font-size: 1rem; color: #ffffffcc; }
-
-/* Cards */
-.card-container, .single-card { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-bottom: 40px; }
-.card {
-    background: linear-gradient(145deg, #ffffff10, #ffffff20);
-    border-radius: 15px;
-    padding: 25px 35px;
-    width: 220px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.5s ease;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    position: relative;
-    overflow: hidden;
-}
-.card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: rgba(255,255,255,0.05);
-    transform: rotate(45deg);
-    transition: all 0.5s ease;
-}
-.card:hover::before { top: -70%; left: -70%; }
-.card:hover { transform: translateY(-10px) scale(1.05); box-shadow: 0 12px 25px rgba(0,0,0,0.4);}
-.card h2 { font-size: 1.4rem; margin-bottom: 8px; font-weight: 700;}
-.card p { font-size: 1rem; color: #ffffffaa;}
-
-/* Telegram button */
-.telegram-btn {
-    display: inline-block;
-    background: linear-gradient(90deg,#00c6ff,#0072ff);
-    border: none;
-    padding: 15px 45px;
-    border-radius: 12px;
     color: #fff;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    margin-top: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    animation: fadeIn 1.5s ease forwards;
 }
-.telegram-btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+
+/* Navbar */
+nav {
+    width: 100%;
+    background: rgba(0,0,0,0.25);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(6px);
+}
+nav h2 { font-size: 1.5rem; letter-spacing: 1px; }
+nav .links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: 0.3s;
+}
+nav .links a:hover { color: #00c6ff; }
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 80px 20px 60px;
+}
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.hero p {
+    font-size: 1.2rem;
+    color: #ffffffcc;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Section */
+.section {
+    text-align: center;
+    padding: 50px 20px;
+}
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+/* Card Base */
+.card {
+    background: linear-gradient(145deg, #ffffff15, #ffffff25);
+    border-radius: 15px;
+    padding: 25px 30px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+    transition: 0.3s;
+    margin: 0 auto 30px;
+}
+.card:hover { transform: translateY(-5px); }
+
+/* Owner Card */
+.owner-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #ffeb3b;
+}
+.owner-btn {
+    display: inline-block;
+    background: linear-gradient(90deg,#ff9800,#ff5722);
+    padding: 12px 26px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+.owner-btn:hover { background: linear-gradient(90deg,#ff5722,#e64a19); }
+
+/* Team Card */
+.team-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+    font-weight: 700;
+    color: #00e5ff;
+}
+.team-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.team-btn {
+    background: linear-gradient(90deg,#00c6ff,#0072ff);
+    padding: 12px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+.team-btn:hover { transform: translateY(-2px); background: linear-gradient(90deg,#0099ff,#0044ff); }
+
+/* CTA Section */
+.cta {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(90deg,#00c6ff,#0072ff);
+    border-radius: 20px;
+    margin: 50px 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+}
+.cta h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+.button-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
+}
+.custom-btn {
+    background: #fff;
+    color: #0072ff;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.custom-btn:hover { background: #f0f0f0; }
 
 /* Footer */
-footer { margin-top: auto; padding-top: 50px; font-size: 0.9rem; text-align: center; color: #ffffff80; }
-
-/* Animations */
-@keyframes bounce {0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-@keyframes fadeInDown { 0% { opacity:0; transform: translateY(-30px);} 100% { opacity:1; transform: translateY(0);} }
-@keyframes fadeInUp { 0% { opacity:0; transform: translateY(30px);} 100% { opacity:1; transform: translateY(0);} }
-@keyframes fadeIn { 0% { opacity:0;} 100% { opacity:1;} }
-
-/* Background floating circles */
-.background-circles { position: absolute; top:0; left:0; width:100%; height:100%; overflow:hidden; z-index:0;}
-.background-circles div {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.05);
-    animation: float 20s linear infinite;
+footer {
+    text-align: center;
+    padding: 25px 15px;
+    font-size: 0.9rem;
+    color: #ffffff90;
+    background: rgba(0,0,0,0.2);
+    margin-top: auto;
 }
-@keyframes float {
-    0% { transform: translateY(100vh) rotate(0deg); opacity:0; }
-    50% { opacity:0.5; }
-    100% { transform: translateY(-100vh) rotate(360deg); opacity:0; }
-}
-
 </style>
 </head>
 <body>
 
-<!-- Animated background circles -->
-<div class="background-circles">
-    <div style="width:60px; height:60px; left:10%; animation-duration:25s;"></div>
-    <div style="width:100px; height:100px; left:30%; animation-duration:35s;"></div>
-    <div style="width:80px; height:80px; left:50%; animation-duration:30s;"></div>
-    <div style="width:50px; height:50px; left:70%; animation-duration:40s;"></div>
-    <div style="width:120px; height:120px; left:85%; animation-duration:45s;"></div>
-</div>
-
-<header>
-    <h1>ECOS INVESTMENT</h1>
-    <div class="help-icon">💬</div>
-    <p>Click on a representative to contact directly on Telegram</p>
-</header>
-
-<!-- Hridoy single card on top -->
-<div class="single-card" style="animation: fadeInUp 1s ease forwards;">
-    <div class="card" onclick="openTelegram('@lxhridoy')">
-        <h2>Hridoy</h2>
-        <p>Click to contact</p>
+<!-- Navbar -->
+<nav>
+    <h2>ECOS INVESTMENT</h2>
+    <div class="links">
+        <a href="#">Home</a>
+        <a href="https://t.me/ecosivm" target="_blank">Telegram</a>
+        <a href="https://ecosivm.top/" target="_blank">Our Site</a>
     </div>
-</div>
+</nav>
 
-<!-- Other three cards in a row -->
-<div class="card-container">
-    <div class="card" onclick="openTelegram('@Vvipperson99')">
-        <h2>Sayem</h2>
-        <p>Click to contact</p>
-    </div>
-    <div class="card" onclick="openTelegram('@Ashraf_9870')">
-        <h2>Ashraful</h2>
-        <p>Click to contact</p>
-    </div>
-    <div class="card" onclick="openTelegram('@mdsoikotBoss349')">
-        <h2>Soikot</h2>
-        <p>Click to contact</p>
-    </div>
-</div>
+<!-- Hero -->
+<section class="hero">
+    <h1>Welcome to ECOS INVESTMENT Help Service</h1>
+    <p>Contact our representatives directly on Telegram for support and join our community channel.</p>
+</section>
 
-<a class="telegram-btn" href="https://t.me/ecosivm" target="_blank">Join Telegram Channel</a>
+<!-- Representatives -->
+<section class="section">
+    <h2>Our Team</h2>
 
+    <!-- Owner Card -->
+    <div class="card owner-card">
+        <h3>Owner</h3>
+        <a href="https://t.me/lxhridoy" target="_blank" class="owner-btn">Hridoy</a>
+    </div>
+
+    <!-- Team Card -->
+    <div class="card team-card">
+        <h3>Super Admin</h3>
+        <div class="team-buttons">
+            <a href="https://t.me/Vvipperson99" target="_blank" class="team-btn">Sayem</a>
+            <a href="https://t.me/Ashraf_9870" target="_blank" class="team-btn">Ashraful</a>
+            <a href="https://t.me/mdsoikotBoss349" target="_blank" class="team-btn">Soikot</a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <h2>Join Our Community</h2>
+    <div class="button-group">
+        <a class="custom-btn" href="https://t.me/ecosivm" target="_blank">Join Telegram</a>
+        <a class="custom-btn" href="https://ecosivm.top/" target="_blank">Our Site</a>
+    </div>
+</section>
+
+<!-- Footer -->
 <footer>
     &copy; 2025 ECOS INVESTMENT | All rights reserved
 </footer>
-
-<script>
-function openTelegram(username) {
-    window.open("https://t.me/" + username.replace('@',''), "_blank");
-}
-</script>
 
 </body>
 </html>
